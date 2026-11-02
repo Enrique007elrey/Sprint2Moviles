@@ -3,4 +3,8 @@
     <string name="btn_convertir">Convertir</string>
     <string name="tv_resultado">Resultado</string>
     <string name="hint_valor">Introduce el valor</string>
+    <string name="titulo">Conversor de distancia</string>
+    <string name="label_valor">Valor</string>
+    <string name="label_origen">De:</string>
+    <string name="label_destino">A:</string>
 </resources>

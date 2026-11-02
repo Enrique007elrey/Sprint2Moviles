@@ -5,60 +5,137 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondo"
     tools:context=".MainActivity">
 
-    <Spinner
-        android:id="@+id/spOrigen"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="320dp"
-        android:layout_marginEnd="1dp"
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/titulo"
+        android:textColor="@color/principal"
+        android:textSize="26sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spDestino"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="59dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spOrigen" />
-
-    <Button
-        android:id="@+id/btnConvertir"
+    <!-- Etiqueta y campo del valor -->
+    <TextView
+        android:id="@+id/tvLabelValor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginBottom="63dp"
-        android:text="@string/btn_convertir"
-        app:layout_constraintBottom_toTopOf="@+id/tvResultado"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="40dp"
+        android:text="@string/label_valor"
+        android:textColor="@color/texto"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/etValor"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
 
+    <EditText
+        android:id="@+id/etValor"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/gradient_spinner"
+        android:hint="@string/hint_valor"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="@color/texto"
+        android:textColorHint="@color/hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelValor" />
+
+    <!-- Etiqueta y spinner de origen -->
+    <TextView
+        android:id="@+id/tvLabelOrigen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/label_origen"
+        android:textColor="@color/texto"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/etValor"
+        app:layout_constraintTop_toBottomOf="@+id/etValor" />
+
+    <!-- El RelativeLayout lleva el borde y el spinner va dentro con match_parent (diapositiva 12) -->
+    <RelativeLayout
+        android:id="@+id/rlOrigen"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/gradient_spinner"
+        app:layout_constraintEnd_toEndOf="@+id/etValor"
+        app:layout_constraintStart_toStartOf="@+id/etValor"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelOrigen">
+
+        <Spinner
+            android:id="@+id/spOrigen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+    <!-- Etiqueta y spinner de destino -->
+    <TextView
+        android:id="@+id/tvLabelDestino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/label_destino"
+        android:textColor="@color/texto"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/etValor"
+        app:layout_constraintTop_toBottomOf="@+id/rlOrigen" />
+
+    <RelativeLayout
+        android:id="@+id/rlDestino"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/gradient_spinner"
+        app:layout_constraintEnd_toEndOf="@+id/etValor"
+        app:layout_constraintStart_toStartOf="@+id/etValor"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelDestino">
+
+        <Spinner
+            android:id="@+id/spDestino"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+    <!-- Botón -->
+    <Button
+        android:id="@+id/btnConvertir"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/btn_convertir"
+        android:textSize="18sp"
+        app:backgroundTint="@color/principal"
+        app:cornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/etValor"
+        app:layout_constraintStart_toStartOf="@+id/etValor"
+        app:layout_constraintTop_toBottomOf="@+id/rlDestino" />
+
+    <!-- Resultado -->
     <TextView
         android:id="@+id/tvResultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="81dp"
+        android:layout_marginTop="40dp"
         android:text="@string/tv_resultado"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btnConvertir" />
-
-    <EditText
-        android:id="@+id/etValor"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginTop="127dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        android:hint="@string/hint_valor"
+        android:textColor="@color/principal"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnConvertir" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
