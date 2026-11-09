@@ -7,4 +7,5 @@
     <string name="label_valor">Valor</string>
     <string name="label_origen">De:</string>
     <string name="label_destino">A:</string>
+    <string name="label_magnitud">Magnitud:</string>
 </resources>

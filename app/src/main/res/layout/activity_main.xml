@@ -21,18 +21,44 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <!-- Etiqueta y spinner de magnitud -->
+    <TextView
+        android:id="@+id/tvLabelMagnitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/label_magnitud"
+        android:textColor="@color/texto"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/etValor"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
 
+    <RelativeLayout
+        android:id="@+id/rlMagnitud"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/gradient_spinner"
+        app:layout_constraintEnd_toEndOf="@+id/etValor"
+        app:layout_constraintStart_toStartOf="@+id/etValor"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelMagnitud">
+
+        <Spinner
+            android:id="@+id/spMagnitud"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
     <!-- Etiqueta y campo del valor -->
     <TextView
         android:id="@+id/tvLabelValor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:text="@string/label_valor"
         android:textColor="@color/texto"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/etValor"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
+        app:layout_constraintTop_toBottomOf="@+id/rlMagnitud" />
 
     <EditText
         android:id="@+id/etValor"
