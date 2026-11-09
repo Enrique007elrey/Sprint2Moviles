@@ -29,10 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
     // Posición de "Temperatura" en el array de magnitudes (es la única que admite negativos)
     private static final int TEMPERATURA = 7;
+    private static final int MONEDA = 9;
 
     // Magnitudes. La posición 0 está vacía para que el spinner empiece sin nada elegido
     private final String[] magnitudes = {
-            "", "Longitud", "Masa", "Volumen", "Datos", "Tiempo", "Potencia", "Temperatura", "Velocidad"
+            "", "Longitud", "Masa", "Volumen", "Datos", "Tiempo", "Potencia", "Temperatura", "Velocidad", "Moneda"
     };
 
     // Unidades de cada magnitud. unidades[magnitud][unidad]
@@ -46,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
             {"", "días", "h", "min", "s"},              // Tiempo
             {"", "MW", "kW", "W", "CV"},                // Potencia
             {"", "°C", "°F", "K"},                      // Temperatura
-            {"", "km/h", "m/s", "mph", "nudos"}         // Velocidad
+            {"", "km/h", "m/s", "mph", "nudos"},        // Velocidad
+            {"", "€", "$", "S/", "¥"}                   // Moneda
     };
 
     // Cuánto vale cada unidad en la unidad base de su magnitud
@@ -60,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
             {0, 86400, 3600, 60, 1},                            // base: segundo
             {0, 1000000, 1000, 1, 735.5},                       // base: vatio (1 CV = 735,5 W)
             {0, 1, 5.0 / 9, 1},                                 // base: Celsius
-            {0, 1 / 3.6, 1, 0.44704, 0.514444}                  // base: m/s
+            {0, 1 / 3.6, 1, 0.44704, 0.514444},                 // base: m/s
+            {0, 1, 0.87, 0.255, 0.0054}                         // base: euro (tipos aproximados, nov 2026)
     };
 
     // Desplazamiento (offset) de cada unidad. Solo la temperatura lo necesita,
@@ -74,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             {0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0},
             {0, 0, 32, 273.15},                                 // °C, °F, K
+            {0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0}
     };
 
@@ -176,7 +180,11 @@ public class MainActivity extends AppCompatActivity {
         double resultado = base / factores[m][posDestino] + offsets[m][posDestino];
 
         // Resultado con solo dos decimales
-        tvResultado.setText(String.format("%.2f %s", resultado, unidades[m][posDestino]));
+        String textoResultado = String.format("%.2f %s", resultado, unidades[m][posDestino]);
+        if (m == MONEDA) {
+            textoResultado += "\n(cambio aprox. nov 2026)";
+        }
+        tvResultado.setText(textoResultado);
     }
 
     private void mostrarError(String mensaje) {
