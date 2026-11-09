@@ -70,7 +70,7 @@
         android:background="@drawable/gradient_spinner"
         android:hint="@string/hint_valor"
         android:importantForAutofill="no"
-        android:inputType="numberDecimal"
+        android:inputType="numberDecimal|numberSigned"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:textColor="@color/texto"
